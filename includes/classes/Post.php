@@ -105,15 +105,24 @@
 
 				<script>
 					function toggle<?php echo $id; ?> () { //this shows which comments to show
+						var target = $(event.target);
+						if(!target.is("a")){
+
 						var element = document.getElementById("toggleComment<?php echo $id; ?>")//the id was declared in the beginnnig of the while loop;//comment section is the block
 						if (element.style.display == "block")//if its showing
 						element.style.display = "none";//hide it
 						else
 							element.style.display = "block"//if its hidden show it
-						}
+							}
+						}	
 				</script>
 
 <?php
+
+				//get number of comments
+				$comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id ='$id'");
+				$comments_check_num = mysqli_num_rows($comments_check);
+
 				//Time frame
 				$date_time_now = date("Y-m-d H:i:s");
 				$start_date = new DateTime($date_time);//time of post //this class comes inbuilt in php
@@ -182,7 +191,13 @@
 									<a href ='$added_by'>$first_name</a>$user_to  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$time_message
 								</div>
 								<div id = 'post_body'>
-									$body<br>
+									$body
+									<br>
+									<br>
+									<br>
+								</div>
+								<div class = 'newfeedPostsOptions'>
+									Comments($comments_check_num)&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
 							</div>
 							<div class ='post_comment' id ='toggleComment$id' style='display:none;'>
@@ -190,6 +205,7 @@
 							</div>
 							<hr>";
 						}//end of if of to check if user friend
+						//the div class newfeedPostsOptions is for displaying the comments
 			}//while loop end
 			if($count > $limit)//if the post count about to the loaded is less than the limit
 			$str .=  "<input type='hidden' class='nextPage' value='" . ($page + 1) . " '><input type ='hidden' class='noMorePosts' value='false'>";//we store thr remaining in this variable..we will increase the page by one here waiting for the next time it loads
