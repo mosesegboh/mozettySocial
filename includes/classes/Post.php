@@ -117,7 +117,7 @@
 						}	
 				</script>
 
-<?php
+				<?php
 
 				//get number of comments
 				$comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id ='$id'");
@@ -196,8 +196,9 @@
 									<br>
 									<br>
 								</div>
-								<div class = 'newfeedPostsOptions'>
+								<div class = 'newfeedPostOptions'>
 									Comments($comments_check_num)&nbsp;&nbsp;&nbsp;&nbsp;
+									<iframe src='like.php?post_id=$id' scrolling='no'></iframe>
 								</div>
 							</div>
 							<div class ='post_comment' id ='toggleComment$id' style='display:none;'>

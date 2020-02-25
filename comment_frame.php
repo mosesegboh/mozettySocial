@@ -39,7 +39,6 @@
 	//get id of post
 if(isset($_GET['post_id'])){//if the element in the above script it sent to this page as a get variable
 	$post_id = $_GET['post_id'];
-
 }
 
 $user_query = mysqli_query($con, "SELECT added_by,user_to FROM posts WHERE id='$post_id'");
