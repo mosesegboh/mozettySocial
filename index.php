@@ -1,7 +1,6 @@
 <?php 
 include("includes/header.php");
-include("includes/classes/User.php");
-include("includes/classes/Post.php");
+
 //session_destroy();//destroys our session when user not logged in
 
 if (isset($_POST['post'])) {
@@ -16,7 +15,7 @@ if (isset($_POST['post'])) {
 	<div class = "user_details_left_right">
 		<a href="<?php echo $userLoggedIn; ?>">
 			<?php 
-				echo $user['first_name'] . " " . $user['last_name'];
+				echo $user['first_name'] . " " . $user['last_name'] . "<br>";
 			?>
 		</a>
 		 	<?php 

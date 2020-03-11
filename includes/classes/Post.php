@@ -39,7 +39,7 @@
 				//update post count for user
 				$num_posts = $this->user_obj->getNumPosts();
 				$num_posts++;
-				$update_query = mysqli_query($this->con, "UPDATE users SET 'num_posts' WHERE username='$added_by'");
+				$update_query = mysqli_query($this->con, "UPDATE users SET num_posts='$num_posts' WHERE username='$added_by'");
 			}
 
 		}
@@ -72,9 +72,9 @@
 					$user_to =  "";
 				}else{
 
-					$user_to_obj = new User ($con, $row['user_to']);
+					$user_to_obj = new User ($this->con, $row['user_to']);
 					$user_to_name = $user_to_obj->getFirstAndLastName();
-					$user_to =  "to <a href='" .$row['user_to'] . "'>" . $user_to_name . "</a>"	;			
+					$user_to =  " to <a href='" .$row['user_to'] . "'>" . $user_to_name . "</a>"	;			
 				}
 				//check if user who posted has their account closed
 				$added_by_obj = new User ($this->con, $added_by);
@@ -96,6 +96,11 @@
 				}else{
 					$count++;//else continue
 				}
+
+				if ($userLoggedIn == $added_by) 
+					$delete_button= "<button class='delete_button btn-danger' id='post$id'>x</button>";
+				else
+					$delete_button ="";
 
 				$user_details_query = mysqli_query($this->con, "SELECT first_name, last_name,profile_pic FROM users WHERE username= '$added_by'" );
 				$user_row = mysqli_fetch_array($user_details_query);
@@ -189,6 +194,7 @@
 								</div>
 								<div class = 'posted_by' style = 'color: #ACACAC;'>
 									<a href ='$added_by'>$first_name</a>$user_to  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$time_message
+									$delete_button
 								</div>
 								<div id = 'post_body'>
 									$body
@@ -207,6 +213,29 @@
 							<hr>";
 						}//end of if of to check if user friend
 						//the div class newfeedPostsOptions is for displaying the comments
+			
+						//javascript code for deleteing post
+						?>
+
+						<script>
+							$(document).ready(function(){
+								$('#post<?php echo $id; ?>').on('click',function(){
+										//bootbox comes with bootstrap
+										bootbox.confirm("Are you sure you want to delete this post?", function(result){
+												//in the below script we are sending variable result and we are calling variable result aswell
+											$.post("includes/form_handlers/delete_post.php?post_id=<?php echo $id; ?>", {result:result});
+											if (result)
+												location.reload();
+										});
+
+								});
+
+							})
+
+						</script>
+
+						<?php
+
 			}//while loop end
 			if($count > $limit)//if the post count about to the loaded is less than the limit
 			$str .=  "<input type='hidden' class='nextPage' value='" . ($page + 1) . " '><input type ='hidden' class='noMorePosts' value='false'>";//we store thr remaining in this variable..we will increase the page by one here waiting for the next time it loads

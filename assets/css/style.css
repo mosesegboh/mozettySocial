@@ -224,3 +224,97 @@ nav a:hover{
 	font-size: 14px;
 }
 
+.profile_left{
+	top: -10px;
+	/*I removed the width: 50px; here to fix the friend button issue*/
+	max-width: 300px;
+	min-width: 130px;
+	height: 100%;
+	float: left;
+	position: relative;
+	background-color: #37B0E9;
+	border-right: 10px solid #83D6FE;
+	color: #CBEAF8;
+	margin-right: 20px;
+}
+
+.profile_left img{
+	min-width: 80px;
+	width: 55%;
+	margin: 20px;
+	border: 5px solid #83D6FE;
+	border-radius: 100px;
+}
+
+.profile_info{
+	display: list-item;
+	background-color: #2980b9;
+	width: 100%;
+	padding: 10px 0 10px 0;	
+}
+
+.profile_info p{
+	margin: 0 0 0 20px;
+	word-wrap: break-word;	
+}
+
+.danger{
+	background-color: #E74C3C;
+}
+
+.warning{
+	background-color: #F0AD4E;
+}
+
+.default{
+	background-color: #BDC3C7;
+}
+
+.success{
+	background-color: #2ecc71;
+}
+
+.info{
+	background-color: #3498DB;
+}
+
+.deep_blue{
+	background-color: #0043f0;
+}
+
+.profile_left input[type="submit"] {
+	width: 70%;
+	height: 30px;
+	border-radius: 5px;
+	margin: 7px 0 0 7px;
+	border: none;
+	color: #fff;
+	padding-right:20px;
+}
+
+#accept_button {
+	width: 20%;
+	height: 28px;
+	border-radius: 5px;
+	margin: 7px 0 0 7px;
+	border: none;
+	color: #fff;
+	background-color: #2ecc71;
+}
+
+#ignore_button {
+	width: 20%;
+	height: 28px;
+	border-radius: 5px;
+	margin: 7px 0 0 7px;
+	border: none;
+	color: #fff;
+	background-color: #E74C3C;
+}
+
+
+
+
+
+
+
