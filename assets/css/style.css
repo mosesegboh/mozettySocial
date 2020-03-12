@@ -312,6 +312,17 @@ nav a:hover{
 	background-color: #E74C3C;
 }
 
+.delete_button {
+	height: 22px;
+	width: 22px;
+	padding: 0;
+	float: right;
+	border-radius: 4px;
+	right: -15px;
+	position: relative;
+}
+
+
 
 
 
