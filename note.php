@@ -9,3 +9,6 @@
 //Object of class mysqli could not be converted to string in C:\wamp64\www\demo\includes\classes\User.php on line 104
 //the above error can be caused by syntax when calling the connection object in your sql statement
 //check reeces error when debugging sqli query error and javascript error
+
+
+
