@@ -11,7 +11,7 @@
 	public function getMostRecentUser(){
 		$userLoggedIn = $this->user_obj->getUsername(); 
 		$query = mysqli_query($this->con, 
-			"SELECT user_to, user_from FROM messages WHERE user_to='$userLoggedIn' OR user_from='$userLoggedIn' ORDER BY id DESC LIMIT 1")
+			"SELECT user_to, user_from FROM messages WHERE user_to='$userLoggedIn' OR user_from='$userLoggedIn' ORDER BY id DESC LIMIT 1");
 	
 		if (mysqli_num_rows($query)==0) 
 			return  false;

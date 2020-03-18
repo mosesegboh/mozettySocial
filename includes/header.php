@@ -3,6 +3,7 @@
 require'config/config.php';
 include("includes/classes/User.php");
 include("includes/classes/Post.php");
+include("includes/classes/Message.php");
 
 //this will prevent not logged in user to log in
 if (isset($_SESSION['username'])) {
